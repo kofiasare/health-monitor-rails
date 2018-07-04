@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe HealthMonitor::Providers::DelayedJob do
-  describe HealthMonitor::Providers::DelayedJob::Configuration do
+describe monitoring::Providers::DelayedJob do
+  describe monitoring::Providers::DelayedJob::Configuration do
     describe 'defaults' do
-      it { expect(described_class.new.queue_size).to eq(HealthMonitor::Providers::DelayedJob::Configuration::DEFAULT_QUEUES_SIZE) }
+      it { expect(described_class.new.queue_size).to eq(monitoring::Providers::DelayedJob::Configuration::DEFAULT_QUEUES_SIZE) }
     end
   end
 
@@ -34,7 +34,7 @@ describe HealthMonitor::Providers::DelayedJob do
         it 'fails check!' do
           expect {
             subject.check!
-          }.to raise_error(HealthMonitor::Providers::DelayedJobException)
+          }.to raise_error(monitoring::Providers::DelayedJobException)
         end
       end
     end

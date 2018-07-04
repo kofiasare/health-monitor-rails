@@ -1,16 +1,15 @@
-require 'health_monitor/providers/base'
+require 'monitoring/providers/base'
 
-module HealthMonitor
+module Monitoring
   module Providers
     class CacheException < StandardError; end
 
     class Cache < Base
       def check!
         time = Time.now.to_s
-
         Rails.cache.write(key, time)
         fetched = Rails.cache.read(key)
-
+        
         raise "different values (now: #{time}, fetched: #{fetched})" if fetched != time
       rescue Exception => e
         raise CacheException.new(e.message)

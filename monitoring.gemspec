@@ -1,18 +1,16 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
-require 'health_monitor/version'
+require 'monitoring/version'
 
 Gem::Specification.new do |s|
-  s.name = 'health-monitor-rails'
-  s.version = HealthMonitor::VERSION
+  s.name = 'monitoring'
+  s.version = Monitoring::VERSION
   s.platform = Gem::Platform::RUBY
-  s.authors = ['Leonid Beder']
-  s.email = ['leonid.beder@gmail.com']
+  s.authors = ['Kofi Asare']
+  s.email = ['archykofi@gmail.com']
   s.license = 'MIT'
-  s.homepage = 'https://github.com/lbeder/health-monitor-rails'
-  s.summary = 'Health monitoring Rails plug-in, which checks various services (db, cache, '\
-    'sidekiq, redis, etc.)'
-  s.description = 'Health monitoring Rails plug-in, which checks various services (db, cache, '\
-    'sidekiq, redis, etc.).'
+  s.homepage = 'https://github.com/kofiasare/monitoring'
+  s.summary = 'Monitoring Rails App, which checks various services'
+  s.description = 'Monitoring Rails App, which checks various services'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']

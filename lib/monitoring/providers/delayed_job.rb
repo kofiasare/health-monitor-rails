@@ -1,7 +1,7 @@
-require 'health_monitor/providers/base'
+require 'monitoring/providers/base'
 require 'delayed_job'
 
-module HealthMonitor
+module Monitoring
   module Providers
     class DelayedJobException < StandardError; end
 
@@ -28,7 +28,7 @@ module HealthMonitor
         private
 
         def configuration_class
-          ::HealthMonitor::Providers::DelayedJob::Configuration
+          ::Monitoring::Providers::DelayedJob::Configuration
         end
       end
 

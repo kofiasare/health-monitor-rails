@@ -1,7 +1,7 @@
-require 'health_monitor/providers/base'
+require 'monitoring/providers/base'
 require 'sidekiq/api'
 
-module HealthMonitor
+module Monitoring
   module Providers
     class SidekiqException < StandardError; end
 
@@ -34,7 +34,7 @@ module HealthMonitor
         private
 
         def configuration_class
-          ::HealthMonitor::Providers::Sidekiq::Configuration
+          ::Monitoring::Providers::Sidekiq::Configuration
         end
       end
 

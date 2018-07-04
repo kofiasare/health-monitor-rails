@@ -1,6 +1,6 @@
-require 'health_monitor/providers/base'
+require 'monitoring/providers/base'
 
-module HealthMonitor
+module Monitoring
   module Providers
     class RedisException < StandardError; end
 
@@ -19,7 +19,7 @@ module HealthMonitor
         private
 
         def configuration_class
-          ::HealthMonitor::Providers::Redis::Configuration
+          ::Monitoring::Providers::Redis::Configuration
         end
       end
 

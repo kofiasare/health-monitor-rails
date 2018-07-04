@@ -1,4 +1,4 @@
-module HealthMonitor
+module Monitoring
   module Providers
     class Base
       attr_reader :request
@@ -10,15 +10,12 @@ module HealthMonitor
 
       def self.configure
         return unless configurable?
-
         @global_configuration = configuration_class.new
-
         yield @global_configuration if block_given?
       end
 
       def initialize(request: nil)
         @request = request
-
         return unless self.class.configurable?
         self.configuration = self.class.instance_variable_get('@global_configuration')
       end

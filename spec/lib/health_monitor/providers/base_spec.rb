@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HealthMonitor::Providers::Base do
+describe monitoring::Providers::Base do
   let(:request) { test_request }
 
   subject { described_class.new(request: request) }

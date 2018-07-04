@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Status</title>
+  <title><%= @customize[:title] %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <style type="text/css" media="screen">
@@ -61,7 +61,9 @@
 <body>
   <div class="container">
     <div class="statuses">
-      <h1>Status Page</h1>
+      <h1>
+        <%= @customize[:title] %>
+      </h1>
       <% @statuses[:results].each do |status| %>
       <div class="status status-<%= status[:status].downcase %>">
         <div class="status-heading">
@@ -73,7 +75,7 @@
       <% end %>
     </div>
     <div class="powered">
-      Powered by <a href="https://github.com/lbeder/health-monitor-rails" target="_blank">health-monitor-rails</a>
+      <%= @customize[:footer] %>
     </div>
   </div>
 </body>
