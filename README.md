@@ -110,7 +110,7 @@ $ gem install health-monitor-rails
 You can mount this inside your app routes by adding this to config/routes.rb:
 
 ```ruby
-mount monitoring::Engine, at: '/'
+mount Monitoring::Engine, at: '/'
 ```
 
 ## Supported Service Providers
@@ -128,7 +128,7 @@ The following services are currently supported:
 By default, only the database check is enabled. You can add more service providers by explicitly enabling them via an initializer:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.cache
   config.redis
   config.sidekiq
@@ -140,7 +140,7 @@ We believe that having the database check enabled by default is very important, 
 (e.g., if you use a database that isn't covered by the check) - you can do that by calling the `no_database` method:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.no_database
 end
 ```
@@ -151,7 +151,7 @@ Some of the providers can also accept additional configuration:
 
 ```ruby
 # Sidekiq
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.sidekiq.configure do |sidekiq_config|
     sidekiq_config.latency = 3.hours
     sidekiq_config.queue_size = 50
@@ -161,7 +161,7 @@ end
 
 ```ruby
 # Redis
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.redis.configure do |redis_config|
     redis_config.connection = Redis.current # use your custom redis connection
     redis_config.url = 'redis://user:pass@example.redis.com:90210/' # or URL
@@ -204,7 +204,7 @@ end
 * Add its class to the configuration:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.add_custom_provider(CustomProvider)
 end
 ```
@@ -213,7 +213,7 @@ end
 If you need to perform any additional error handling (for example, for additional error reporting), you can configure a custom error callback:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.error_callback = proc do |e|
     logger.error "Health check failed with: #{e.message}"
 
@@ -226,7 +226,7 @@ end
 By default, the `/check` endpoint is not authenticated and is available to any user. You can authenticate using HTTP Basic Auth by providing authentication credentials:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.basic_auth_credentials = {
     username: 'SECRET_NAME',
     password: 'Shhhhh!!!'
@@ -238,7 +238,7 @@ end
 By default, environment variables is `nil`, so if you'd want to include additional parameters in the results JSON, all you need is to provide a `Hash` with your custom environment variables:
 
 ```ruby
-monitoring.configure do |config|
+Monitoring.configure do |config|
   config.environment_variables = {
     build_number: 'BUILD_NUMBER',
     git_sha: 'GIT_SHA'
